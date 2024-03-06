@@ -4,3 +4,33 @@
     margin-right: auto;
     width: 50%;
 }
+
+.topnav{
+    background-color: gray;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+
+}
+
+.topnav a{
+    float:left;
+    text-decoration: none;
+    background-color:gray;
+    color:white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.topnav a:hover{
+    background-color: rgba(12, 152, 29, 0.744);
+}
+
+.topnav a.active{
+    background-color:rgba(14, 194, 35, 0.744);
+
+}
