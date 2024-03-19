@@ -6,12 +6,10 @@
 }
 
 .borderlesscontainer{
+    position:relative;
     margin:8px
 }
 
-.inline{
-    display: inline-block
-}
 body{
     background-color: black;
     color: white;
@@ -23,22 +21,24 @@ h1{
     font-size: 36px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    align
 }
-.topnav{
+.topnav {
     background-color: gray;
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     font-size: 100%;
-    margin: 0px;
-    padding:0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left:0px;
+    padding-right: 0px;
     width: 100%;
 
 }
 
 .topnav a{
-    width: 16.03%; /*--Why does this happen? Why isn't it 16.666666%? */
+    width: 16.5%; /*--Why does this happen? Why isn't it 16.666666%? */
+    overflow-wrap: break-word;
     text-align: center;
     float:left;
     text-decoration: none;
@@ -46,8 +46,8 @@ h1{
     color:white;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
+    /*padding-left: 5px;
+    padding-right: 5px;*/
     border-width:  2px;
     border-style:hidden solid hidden hidden;
 
@@ -55,9 +55,54 @@ h1{
 
 .topnav a:hover{
     background-color: rgba(12, 152, 29, 0.744);
+    color: black;
 }
 
 .topnav a.active{
     background-color:rgba(14, 194, 35, 0.744);
+    color: black;
 
+}
+
+.centeredImageContainer {
+    position: relative;
+    width:25%; 
+    display: block; 
+    margin-left:auto; 
+    margin-right:auto; 
+    background-color:green;
+}
+
+.centeredImageContainer:hover .overlay{
+    height:100%
+}
+
+.overlay {
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color: rgba(14, 194, 35, 1);
+    overflow:hidden;
+    width:100%;
+    height:0;
+    transition: 1s ease;
+}
+
+.text {
+    white-space:nowrap;
+    color: white;
+    font-size: 40px;
+    position:absolute;
+    overflow:hidden;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.image{
+    display: block;
+    width:100%;
+    height:auto;
 }
