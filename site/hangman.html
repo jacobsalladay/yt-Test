@@ -32,7 +32,7 @@
     </div> 
     <div id="inPad">
         <p id="status"><b>Make a guess!</b></p>
-        <div class="inRows">
+        <div id="inRow1" class="inRows">
             <button class=inButton id=A  type="button">A</button>
             <button class=inButton id=B  type="button">B</button>
             <button class=inButton id=C  type="button">C</button>
@@ -42,7 +42,7 @@
             <button class=inButton id=G  type="button">G</button>
         </div>
     
-        <div class="inRows">
+        <div id="inRow2" class="inRows">
             <button class=inButton id=H  type="button">H</button>
             <button class=inButton id=I  type="button">I</button>
             <button class=inButton id=J  type="button">J</button>
@@ -52,7 +52,7 @@
             <button class=inButton id=N  type="button">N</button>
         </div>
 
-        <div class="inRows">
+        <div id="inRow3" class="inRows">
             <button class=inButton id=O  type="button">O</button>
             <button class=inButton id=P  type="button">P</button>
             <button class=inButton id=Q  type="button">Q</button>
@@ -62,7 +62,7 @@
             <button class=inButton id=U  type="button">U</button>
         </div>
 
-        <div class="inRows">
+        <div id="inRow4" class="inRows">
             <button class=inButton id=V  type="button">V</button>
             <button class=inButton id=W  type="button">W</button>
             <button class=inButton id=X  type="button">X</button>
@@ -74,6 +74,9 @@
     
     <script>
         let lives=7;
+        const alpha=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+        let alphaGuessed=[]
+        for(let i=0;i<alpha.length;i++){alphaGuessed.push(false)};
         const wordList=["testing","oNlY","these","WORDS!"];
         for(var i = 0; i <wordList.length;i++){
             wordList[i]=wordList[i].toUpperCase();
@@ -85,33 +88,23 @@
         hideWord(hiddenWord);
         initWord();
 
+        //Creating buttons for the display
+        
+
         //Setting up all buttons to update the revealed word
-        document.getElementById('A').addEventListener("click",function(){updateRevWord("A");});
-        document.getElementById('B').addEventListener("click",function(){updateRevWord("B");});
-        document.getElementById('C').addEventListener("click",function(){updateRevWord("C");});
-        document.getElementById('D').addEventListener("click",function(){updateRevWord("D");});
-        document.getElementById('E').addEventListener("click",function(){updateRevWord("E");});
-        document.getElementById('F').addEventListener("click",function(){updateRevWord("F");});
-        document.getElementById('G').addEventListener("click",function(){updateRevWord("G");});
-        document.getElementById('H').addEventListener("click",function(){updateRevWord("H");});
-        document.getElementById('I').addEventListener("click",function(){updateRevWord("I");});
-        document.getElementById('J').addEventListener("click",function(){updateRevWord("J");});
-        document.getElementById('K').addEventListener("click",function(){updateRevWord("K");});
-        document.getElementById('L').addEventListener("click",function(){updateRevWord("L");});
-        document.getElementById('M').addEventListener("click",function(){updateRevWord("M");});
-        document.getElementById('N').addEventListener("click",function(){updateRevWord("N");});
-        document.getElementById('O').addEventListener("click",function(){updateRevWord("O");});
-        document.getElementById('P').addEventListener("click",function(){updateRevWord("P");});
-        document.getElementById('Q').addEventListener("click",function(){updateRevWord("Q");});
-        document.getElementById('R').addEventListener("click",function(){updateRevWord("R");});
-        document.getElementById('S').addEventListener("click",function(){updateRevWord("S");});
-        document.getElementById('T').addEventListener("click",function(){updateRevWord("T");});
-        document.getElementById('U').addEventListener("click",function(){updateRevWord("U");});
-        document.getElementById('V').addEventListener("click",function(){updateRevWord("V");});
-        document.getElementById('W').addEventListener("click",function(){updateRevWord("W");});
-        document.getElementById('X').addEventListener("click",function(){updateRevWord("X");});
-        document.getElementById('Y').addEventListener("click",function(){updateRevWord("Y");});
-        document.getElementById('Z').addEventListener("click",function(){updateRevWord("Z");});
+        for(let i = 0; i < alpha.length;i++){
+            let d = alpha[i];
+            /* const newButton=document.createElement('button');
+            newButton.id=d;
+            newButton.textContent=d;
+            newButton.className= 'inButton';
+            if(i<7){let r = 1}
+            else if(i<14){let r = 2}
+            else if(i<21){let r=3}
+            else{let r=4}
+            document.getElementById("inRow"+r).appendChild(newButton);*/
+            document.getElementById(d).addEventListener("click",function(){updateRevWord(d)});
+        }
 
         function hideWord(hiddenWord){
             hiddenWord=hiddenWord.toUpperCase();
