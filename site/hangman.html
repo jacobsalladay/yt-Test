@@ -31,7 +31,7 @@
         </div>
     </div> 
     <div id="inPad">
-        <p><b>Make a guess!</b></p>
+        <p id="status"><b>Make a guess!</b></p>
         <div class="inRows">
             <button class=inButton id=A  type="button">A</button>
             <button class=inButton id=B  type="button">B</button>
@@ -74,7 +74,10 @@
     
     <script>
         let lives=7;
-        const wordList=["Testing","oNlY","these","WORDS!"];
+        const wordList=["testing","oNlY","these","WORDS!"];
+        for(var i = 0; i <wordList.length;i++){
+            wordList[i]=wordList[i].toUpperCase();
+        }
         let guessedWord="";
         let hiddenWord=wordList[0]//randInt(0,wordList.length-1)];
         let shown="";
@@ -124,6 +127,7 @@
             for(let i = 0; i < shownBool.length;i++){
                 temp=temp+"_ ";
             }
+            shown=temp;
             console.log(temp);
             document.getElementById("revWord").innerHTML = temp;
         }
@@ -131,34 +135,50 @@
             //document.getElementById("revWord").innerHTML = randInt(0,10);
             //document.getElementById("revWord").innerHTML = inLetter;
             console.log("Searching for the letter " + inLetter);
-            let found=false;
-            for(let i = 0; i < hiddenWord.length;i++){
-                if(hiddenWord[i]==inLetter.toUpperCase()){
+            shown="";
+            if(hiddenWord.includes(inLetter)==true){
+                console.log("Instance Found!");
+                for(let i = 0; i < hiddenWord.length;i++){
+                if(hiddenWord[i]===inLetter.toUpperCase()){
                     shownBool[i]=true;
-                    found=true;
-                    console.log("Instance Found!");
-                }
-            }
-                shown="";
-            if(found){
-                for(let i = 0; i < shownBool.length;i++){
-                    if(shownBool[i] ){
-                        shown=shown+hiddenWord[i]+" ";
-                    }
-                    else{
-                        shown=shown + "_ ";
-                        document.getElementById("revWord").innerHTML = shown;
-                    }
+                   }
                 }
             }
             else{
-                lives=lives-1;
+                lives--;
                 document.getElementById("livesRem").innerHTML = "Lives Left: " + lives;
-            }        
+            }
+            for(let i = 0; i < shownBool.length;i++){
+                if(shownBool[i] ){
+                    shown=shown+hiddenWord[i]+" ";
+                }
+                else{
+                    shown=shown + "_ ";
+                }
+                
+            }
+            document.getElementById("revWord").innerHTML = shown;
+            console.log(shown);
+            checkWin();
         }
         //Returns a random integer between two values
         function randInt(min, max){
             return Math.floor(Math.random()*(max-min))+min;
+        }
+
+        function checkWin(){
+            let win = true;
+            for(let i = 0; i < hiddenWord.length;i++){
+                if(shownBool[i]==false){
+                    win=false;
+                }
+            }
+            if(win){
+                document.getElementById("status").innerHTML = "Congratulation!";
+            }
+            else if(lives<=0){
+                document.getElementById("status").innerHTML = "You Lose!";
+            }
         }
     </script>
 
