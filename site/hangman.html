@@ -74,6 +74,8 @@
     
     <script>
         let lives=7;
+        let playAgain;
+        let gameOver=false;
         const alpha=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
         let alphaGuessed=[]
         for(let i=0;i<alpha.length;i++){alphaGuessed.push(false)};
@@ -85,6 +87,16 @@
         let hiddenWord=wordList[0]//randInt(0,wordList.length-1)];
         let shown="";
         let shownBool=[];
+        const canvas = document.getElementById("hangman");
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle="black";
+        ctx.fillRect(100, 100, 100, 5);
+        ctx.fillRect(200,105,5,-100);
+        ctx.fillRect(200,5,-50,5);
+        ctx.fillRect(150,5,5,25);
+        ctx.beginPath();
+        ctx.arc(canvas.width/2+2.5,35,5,0,2*Math.PI);
+        ctx.stroke();
         hideWord(hiddenWord);
         initWord();
 
@@ -124,11 +136,17 @@
             console.log(temp);
             document.getElementById("revWord").innerHTML = temp;
         }
-        function updateRevWord(inLetter){
-            //document.getElementById("revWord").innerHTML = randInt(0,10);
-            //document.getElementById("revWord").innerHTML = inLetter;
+        function updateRevWord(inLetter){ //Checks letter to see if it's in the hidden word. Will then reveal each letter found.
             console.log("Searching for the letter " + inLetter);
             shown="";
+            let index = alpha.indexOf(inLetter);
+            console.log(index);
+            console.log(alpha[index]+" is at index " + index + " and has " + (alphaGuessed[index] ? "":"not ") + "been guessed");
+            if(gameOver || alphaGuessed[index]){
+                console.log("Problem, ended loop")
+                return;
+            }
+            alphaGuessed[index]=true;
             if(hiddenWord.includes(inLetter)==true){
                 console.log("Instance Found!");
                 for(let i = 0; i < hiddenWord.length;i++){
@@ -167,11 +185,43 @@
                 }
             }
             if(win){
-                document.getElementById("status").innerHTML = "Congratulation!";
+                document.getElementById("status").innerHTML = "Congratulations!";
+                gameOver=true;
+
+
             }
             else if(lives<=0){
                 document.getElementById("status").innerHTML = "You Lose!";
+                gameOver=true;
             }
+
+            if(gameOver){
+                let result= win ? "winner":"loser";
+                playAgain=window.confirm("You were a "+result+". Play again?");
+                if(playAgain){resetGame()}
+                return;
+
+            }
+        }
+
+        function resetGame(){
+            lives=7;
+            playAgain=false;
+            gameOver=false;
+            alphaGuessed=[]
+            for(let i=0;i<alpha.length;i++){alphaGuessed.push(false)};
+            guessedWord="";
+            hiddenWord=wordList[0];
+            shown="";
+            shownBool=[];
+            hideWord(hiddenWord);
+            initWord();
+            document.getElementById("livesRem").innerHTML = "Lives Left: " + lives;
+
+        }
+
+        function updateCanvas(){
+
         }
     </script>
 
