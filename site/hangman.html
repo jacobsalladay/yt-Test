@@ -90,13 +90,14 @@
         const canvas = document.getElementById("hangman");
         const ctx = canvas.getContext("2d");
         ctx.fillStyle="black";
-        ctx.fillRect(100, 100, 100, 5);
+        ctx.fillRect(100, 150, 100, 5);
         ctx.fillRect(200,105,5,-100);
         ctx.fillRect(200,5,-50,5);
         ctx.fillRect(150,5,5,25);
         ctx.beginPath();
-        ctx.arc(canvas.width/2+2.5,35,5,0,2*Math.PI);
+        ctx.arc(canvas.width/2+2.5,40,10,0,2*Math.PI);
         ctx.stroke();
+        ctx.fillRect(150,50,5,30)
         hideWord(hiddenWord);
         initWord();
 
