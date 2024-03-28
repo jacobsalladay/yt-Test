@@ -17,8 +17,6 @@ let lives=7;
     }
     let guessedWord="";
     let hiddenWord=wordList[randInt(0,wordList.length-1)];
-
-    hiddenWord = 'WORDS!';
     let shown="";
     let shownBool=[];
     const canvas = document.getElementById("hangman");
