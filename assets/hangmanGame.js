@@ -11,10 +11,10 @@ let lives=7;
         if(!regex.test(wordList[i])){
             console.log("Purging " + wordList[i] + " from the list of words!");
             wordList.pop(i);
-            break;
         }
-        else{wordList[i]=wordList[i].toUpperCase();}
     }
+    for(let i = 0; i < wordList.length;i++){wordList[i]=wordList[i].toUpperCase();}
+    
     let guessedWord="";
     let hiddenWord=wordList[randInt(0,wordList.length-1)];
     let shown="";
