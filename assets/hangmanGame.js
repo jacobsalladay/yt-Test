@@ -13,7 +13,7 @@ let lives=7;
             wordList.pop(i);
             break;
         }
-        wordList[i]=wordList[i].toUpperCase();
+        else{wordList[i]=wordList[i].toUpperCase();}
     }
     let guessedWord="";
     let hiddenWord=wordList[randInt(0,wordList.length-1)];
@@ -67,6 +67,7 @@ let lives=7;
         /* console.log(index);
         console.log(alpha[index]+" is at index " + index + " and has " + (alphaGuessed[index] ? "":"not ") + "been guessed"); */
         if(gameOver || alphaGuessed[index]){
+            document.getElementById("status").innerHTML = "You have already guessed " +inLetter + "!";
             console.log("Problem, ended loop")
             return;
         }
@@ -193,7 +194,7 @@ let lives=7;
         let r = randInt(0,wordList.length-1);
         console.log(r);
         hiddenWord=wordList[r];
-
+        document.getElementById("status").innerHTML = "Time to guess!";
         alphaGuessed=[]
         for(let i=0;i<alpha.length;i++){alphaGuessed.push(false)};
         for(let i=0;i<alpha.length;i++){document.getElementById(alpha[i]).style.color="white"};
