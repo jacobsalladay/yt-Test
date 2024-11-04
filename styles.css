@@ -186,3 +186,33 @@ h1{
     margin-right: auto;
     margin-top: 1%;
 }
+
+.whiteButton{
+    position: relative;
+    display: inline-block;
+    margin left:10%;
+    margin right: 10%;
+    background-color: white;
+    color: gray;
+    text-align: center;
+}
+
+.blackButton{
+    position: relative;
+    display: inline-block;
+    margin left:10%;
+    margin right: 10%;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.blueButton{
+    position: relative;
+    display: inline-block;
+    margin left:10%;
+    margin right: 10%;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
