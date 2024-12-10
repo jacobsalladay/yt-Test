@@ -19,13 +19,33 @@
     </nav>
 
     <!--Create a workable game of monopoly with AI and options for up to 6 players to play-->
-    <div>
-        <svg class="gameBoard" width="100%", height = "100%">
-            <rect class="cornerSquare" width="100%", height = "100%" > Square 1</rect>
-            <rect class="vertEdgeSquare" width="100%", height="100%"> Square 2</rect>
-        </svg>
+       <canvas id="gameBoard" height = "500px" width="500px"  ></canvas>
 
-    </div>
+    <script>
+            const canvas = document.getElementById("gameBoard");
+            const ctx = canvas.getContext("2d");
+            ctx.fillStyle="blue";
+            ctx.strokeStyle = "black";
+            var fillRect = false;
+
+            
+            ctx.lineWidth=1;
+            let x=0;
+            let y=0;
+            let w = canvas.offsetWidth/12;
+            let h = canvas.offsetHeight/12;
+            ctx.fillRect(0,0,2*w,h);
+            ctx.fillStyle="red";
+            for(let i = 0; i < 8;i++){
+                x=x+w;
+                ctx.fillRect(x,y,w,h);
+            }
+            ctx.fillRect(x,y,2*w,h);
+            if (fillRect) {
+            ctx.fill();}
+            ctx.stroke();
+        }
+    </script>
 
 </body>
 </html>

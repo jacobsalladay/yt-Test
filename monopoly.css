@@ -51,28 +51,32 @@ body{
     position: relative;
     width:50vw;
     height: 50vw; 
-    
-    display: inline-block; 
+    display: flex; 
     margin-left:auto; 
     margin-right:auto; 
-    /*background-color:green;*/
+    background-color:green;
 }
 .cornerSquare{
+    position: relative;
     width: 10%;
     height: 10%;
     border-color: blue;
-    /*display: inline-block;*/
+    display: inline-block;
     background-color: white;
+    color:white;
     border-width: 1px;
+    margin:auto;
 }
 
 .vertEdgeSquare{
+    position: relative;
     width: 5%;
     height: 10%;
     /*display: inline-block;*/
     border-color: blue;
     background-color: white;
     border-width:1px;
+    margin: auto;
 }
 
 .horEdgeSquare{
