@@ -48,7 +48,7 @@ body{
 
 }
 .gameBoard{
-    position: relative;
+    position: centered;
     width:50vw;
     height: 50vw; 
     display: flex; 
@@ -60,6 +60,8 @@ body{
     position: relative;
     width: 10%;
     height: 10%;
+    stroke: black;
+    fill: transparent;
     border-color: blue;
     display: inline-block;
     background-color: white;

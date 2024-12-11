@@ -24,27 +24,30 @@
     <script>
             const canvas = document.getElementById("gameBoard");
             const ctx = canvas.getContext("2d");
-            ctx.fillStyle="blue";
+
+            ctx.fillStyle= "transparent";
             ctx.strokeStyle = "black";
-            var fillRect = false;
+            ctx.lineWidth=2;
 
             
             ctx.lineWidth=1;
+
+            //Gameboard Setup -- Drawing all of the squares
             let x=0;
             let y=0;
             let w = canvas.offsetWidth/12;
             let h = canvas.offsetHeight/12;
             ctx.fillRect(0,0,2*w,h);
-            ctx.fillStyle="red";
+            x=2*w;
+            ctx.strokeRect(x,y,w,h);
             for(let i = 0; i < 8;i++){
                 x=x+w;
                 ctx.fillRect(x,y,w,h);
+                ctx.strokeRect(x,y,w,h);
             }
             ctx.fillRect(x,y,2*w,h);
-            if (fillRect) {
-            ctx.fill();}
+            ctx.fill();
             ctx.stroke();
-        }
     </script>
 
 </body>
