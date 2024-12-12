@@ -19,12 +19,13 @@
     </nav>
 
     <!--Create a workable game of monopoly with AI and options for up to 6 players to play-->
-       <canvas id="gameBoard" height = "500px" width="500px"  ></canvas>
+       <canvas id="gameBoard" height = "100%" width="100%"  ></canvas>
 
     <script>
             const canvas = document.getElementById("gameBoard");
             const ctx = canvas.getContext("2d");
-
+            ctx.canvas.width=window.innerHeight;
+            ctx.canvas.height=window.innerHeight;
             ctx.fillStyle= "transparent";
             ctx.strokeStyle = "black";
             ctx.lineWidth=2;
@@ -35,17 +36,76 @@
             //Gameboard Setup -- Drawing all of the squares
             let x=0;
             let y=0;
-            let w = canvas.offsetWidth/12;
-            let h = canvas.offsetHeight/12;
-            ctx.fillRect(0,0,2*w,h);
-            x=2*w;
-            ctx.strokeRect(x,y,w,h);
-            for(let i = 0; i < 8;i++){
-                x=x+w;
-                ctx.fillRect(x,y,w,h);
-                ctx.strokeRect(x,y,w,h);
+            let w = canvas.offsetWidth/24;
+            let h = canvas.offsetWidth/24;
+            cornerW=2*w;
+            cornerH=2*h;
+
+            topBotW=w;
+            topBotH=2*h;
+
+            leftRightW=2*w;
+            leftRightH=h;
+
+            ctx.font = "20px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillRect(0,0,cornerW,cornerH);
+            ctx.strokeRect(0,0,cornerW,cornerH);
+            x=x+cornerW;
+            //Top row
+            for(let i = 0; i < 9;i++){
+                
+                ctx.fillRect(x,y,topBotW,topBotH);
+                ctx.strokeRect(x,y,topBotW,topBotH);
+                ctx.fillText(i,x,y);
+                x=x+topBotW;
             }
-            ctx.fillRect(x,y,2*w,h);
+            ctx.fillRect(x,y,cornerW,cornerH);
+            ctx.strokeRect(x,y,cornerW,cornerH);
+                y=y+cornerH;
+            
+                //Right Side
+            for(let i = 0; i < 9; i++){
+                ctx.fillRect(x,y,leftRightW,leftRightH);
+                ctx.strokeRect(x,y,leftRightW,leftRightH);
+                y=y+leftRightH;
+            }
+
+            ctx.fillRect(x,y,cornerW,cornerH);
+            ctx.strokeRect(x,y,cornerW,cornerH);
+            x=x-topBotW;
+            //Bottom Row
+            for(let i = 0; i < 9; i++){
+                ctx.fillRect(x,y,topBotW,topBotH);
+                ctx.strokeRect(x,y,topBotW,topBotH);
+                x=x-topBotW;
+            }
+            x-=topBotW;
+            ctx.fillRect(x,y,cornerW,cornerH);
+            ctx.strokeRect(x,y,cornerW,cornerH);
+            y-=leftRightH;
+            //Left side
+            for(let i = 0; i < 9; i++){
+                ctx.fillRect(x,y,leftRightW,leftRightH);
+                ctx.strokeRect(x,y,leftRightW,leftRightH);
+                y=y-leftRightH;
+            }
+            x=3*w;
+            y=5*h;
+            //ctx.fillStyle= "blue";
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+            ctx.lineTo(5*w,3*h);
+            ctx.lineTo(10*w,8*h);
+            ctx.lineTo(8*w,10*h);
+            ctx.lineTo(x,y);
+            //ctx.fillRect(x, y, 7*w, 2*h);
+            //ctx.strokeRect(x,y,7*w,2*h);
+
+
+
+
             ctx.fill();
             ctx.stroke();
     </script>
