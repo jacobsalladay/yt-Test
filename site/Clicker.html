@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker</title>
+</head>
+<body>
+
+    <div class="centeredImageContainer">
+        <img id= "click-image" src="../assets/psych1.jpg" alt="click me!" width=300px>
+    </div>
+    <div> <p id="click-counter">No clicks</p>
+    </div>
+</body>
+
+<script>
+    let click=0;
+    document.getElementById("click-image").addEventListener("click",function(){
+        click++;
+        document.getElementById("click-counter").innerHTML="Clicks:" + click;
+        
+    })
+</script>
+</html>
